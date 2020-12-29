@@ -1,0 +1,90 @@
+<%- include("partials/header") %>
+<div class="container mt-3">
+	<h1>Add New Keyboard</h1>
+	<form action="/keyboards" method="POST">
+	  <div class="form-group">
+		<label for="brand">Keyboard Brand</label>
+		<input type="text" class="form-control" name="brand" placeholder="e.g. Corsair" autofocus>
+	  </div>
+	  <div class="form-group">
+		<label for="name">Keyboard Name</label>
+		<input type="text" class="form-control" name="name" placeholder="e.g. Corsair K70">
+	  </div>
+	  <div class="form-group">
+    	<label for="switches">Switch Type</label>
+		<select class="form-control" name="switches" id="switches">
+		  <option value="" selected disabled hidden>Select Type</option>
+		  <option>Cherry MX Red</option>
+		  <option>Cherry MX Brown</option>
+		  <option>Cherry MX Black</option>
+		  <option>Cherry MX Blue</option>
+		  <option>Gateron Red</option>
+		  <option>Gateron Brown</option>
+		  <option>Gateron Clear</option>
+		  <option>Gateron Blue</option>
+		  <option>Topre 45g</option>
+		  <option>Topre 55g</option>
+		  <option>Non-standard</option>
+		</select>
+  	  </div>
+      <div class="form-group">
+    	<label for="size">Size</label>
+		<select class="form-control" name="size" id="size">
+		  <option value="" selected disabled hidden>Select Size</option>
+		  <option>100% / Full-size</option>
+		  <option>80% / TKL</option>
+		  <option>60% / Compact</option>
+		  <option>Non-standard</option>
+		</select>
+  	  </div>
+	  <div class="form-group">
+		<label for="keycapMaterial">Keycap Material</label>
+		  <select class="form-control" name="keycapMaterial" id="keycapMaterial">
+		  <option value="" selected disabled hidden>Select Material</option>
+		  <option>ABS</option>
+		  <option>PBT</option>
+		  <option>POM</option>
+		  <option>Non-standard</option>
+		</select>
+	  </div>
+	  <div class="form-group">
+		<label for="keycapType">Keycap Type</label>
+		  <select class="form-control" name="keycapType" id="keycapType">
+		  <option value="" selected disabled hidden>Select Type</option>
+		  <option>Doubleshot</option>
+		  <option>Dye Sublimated</option>
+		  <option>Laser Etched</option>
+		  <option>Printed</option>
+		</select>
+	  </div>
+	  <div class="form-group">
+    	<label for="backlighting">Backlighting</label>
+		<select class="form-control" name="backlighting" id="backlighting">
+		  <option value="" selected disabled hidden>Select Backlighting</option>
+		  <option>Full RGB</option>
+		  <option>Limited Backlighting</option>
+		  <option>No Backlighting</option>
+		</select>
+  	  </div>
+      <div class="form-group">
+    	<label for="caseMaterial">Case Material</label>
+		<select class="form-control" name="caseMaterial" id="caseMaterial">
+		  <option value="" selected disabled hidden>Select Material</option>
+		  <option>Plastic</option>
+		  <option>Acrylic</option>
+		  <option>Wood</option>
+		  <option>Aluminium</option>
+		</select>
+  	  </div>
+	  <div class="form-group">
+		<label for="image">Image Link</label>
+		<input type="text" class="form-control" name="image" placeholder="https://www.myimage.com">
+	  </div>
+	  <div class="form-group">
+		<label for="description">Review</label>
+		<textarea class="form-control" rows="8" name="description" placeholder="Write your review here."></textarea>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+<%- include("partials/footer") %>

@@ -1,0 +1,90 @@
+<%- include("partials/header") %>
+<div class="container mt-3">
+	<h1>Edit Keyboard</h1>
+	<form action="/keyboards/<%= keyboard._id %>?_method=PUT" method="POST">
+	  <div class="form-group">
+		<label for="brand">Keyboard Brand</label>
+		<input type="text" class="form-control" name="brand" value="<%= keyboard.brand %>" autofocus>
+	  </div>
+	  <div class="form-group">
+		<label for="name">Keyboard Name</label>
+		<input type="text" class="form-control" name="name" value="<%= keyboard.name %>">
+	  </div>
+	  <div class="form-group">
+    	<label for="switches">Switch Type</label>
+		<select class="form-control" name="switches" id="switches">
+		  <option value="" selected disabled hidden>Select Type</option>
+		  <option <%= keyboard.switches === 'Cherry MX Red' ? 'selected' : '' %>>Cherry MX Red</option>
+		  <option <%= keyboard.switches === 'Cherry MX Brown' ? 'selected' : '' %>>Cherry MX Brown</option>
+		  <option <%= keyboard.switches === 'Cherry MX Black' ? 'selected' : '' %>>Cherry MX Black</option>
+		  <option <%= keyboard.switches === 'Cherry MX Blue' ? 'selected' : '' %>>Cherry MX Blue</option>
+		  <option <%= keyboard.switches === 'Gateron Red' ? 'selected' : '' %>>Gateron Red</option>
+		  <option <%= keyboard.switches === 'Gateron Brown' ? 'selected' : '' %>>Gateron Brown</option>
+		  <option <%= keyboard.switches === 'Gateron Clear' ? 'selected' : '' %>>Gateron Clear</option>
+		  <option <%= keyboard.switches === 'Gateron Blue' ? 'selected' : '' %>>Gateron Blue</option>
+		  <option <%= keyboard.switches === 'Topre 45g' ? 'selected' : '' %>>Topre 45g</option>
+		  <option <%= keyboard.switches === 'Topre 55g' ? 'selected' : '' %>>Topre 55g</option>
+		  <option <%= keyboard.switches === 'Non-standard' ? 'selected' : '' %>>Non-standard</option>
+		</select>
+  	  </div>
+      <div class="form-group">
+    	<label for="size">Size</label>
+		<select class="form-control" name="size" id="size">
+		  <option value="" selected disabled hidden>Select Size</option>
+		  <option <%= keyboard.size === '100% / Full-size' ? 'selected' : '' %>>100% / Full-size</option>
+		  <option <%= keyboard.size === '80% / TKL' ? 'selected' : '' %>>80% / TKL</option>
+		  <option <%= keyboard.size === '60% / Compact' ? 'selected' : '' %>>60% / Compact</option>
+		  <option <%= keyboard.size === 'Non-standard' ? 'selected' : '' %>>Non-standard</option>
+		</select>
+  	  </div>
+	  <div class="form-group">
+		<label for="keycapMaterial">Keycap Material</label>
+		  <select class="form-control" name="keycapMaterial" id="keycapMaterial">
+		  <option value="" selected disabled hidden>Select Material</option>
+		  <option <%= keyboard.keycapMaterial === 'ABS' ? 'selected' : '' %>>ABS</option>
+		  <option <%= keyboard.keycapMaterial === 'PBT' ? 'selected' : '' %>>PBT</option>
+		  <option <%= keyboard.keycapMaterial === 'POM' ? 'selected' : '' %>>POM</option>
+		  <option <%= keyboard.keycapMaterial === 'Non-standard' ? 'selected' : '' %>>Non-standard</option>
+		</select>
+	  </div>
+	  <div class="form-group">
+		<label for="keycapType">Keycap Type</label>
+		  <select class="form-control" name="keycapType" id="keycapType">
+		  <option value="" selected disabled hidden>Select Type</option>
+		  <option <%= keyboard.keycapType === 'Doubleshot' ? 'selected' : '' %>>Doubleshot</option>
+		  <option <%= keyboard.keycapType === 'Dye Sublimated' ? 'selected' : '' %>>Dye Sublimated</option>
+		  <option <%= keyboard.keycapType === 'Laser Etched' ? 'selected' : '' %>>Laser Etched</option>
+		  <option <%= keyboard.keycapType === 'Printed' ? 'selected' : '' %>>Printed</option>
+		</select>
+	  </div>
+	  <div class="form-group">
+    	<label for="backlighting">Backlighting</label>
+		<select class="form-control" name="backlighting" id="backlighting">
+		  <option value="" selected disabled hidden>Select Backlighting</option>
+		  <option <%= keyboard.backlighting === 'Full RGB' ? 'selected' : '' %>>Full RGB</option>
+		  <option <%= keyboard.backlighting === 'Limited Backlighting' ? 'selected' : '' %>>Limited Backlighting</option>
+		  <option <%= keyboard.backlighting === 'No Backlighting' ? 'selected' : '' %>>No Backlighting</option>
+		</select>
+  	  </div>
+      <div class="form-group">
+    	<label for="caseMaterial">Case Material</label>
+		<select class="form-control" name="caseMaterial" id="caseMaterial">
+		  <option value="" selected disabled hidden>Select Material</option>
+		  <option <%= keyboard.caseMaterial === 'Plastic' ? 'selected' : '' %>>Plastic</option>
+		  <option <%= keyboard.caseMaterial === 'Acrylic' ? 'selected' : '' %>>Acrylic</option>
+		  <option <%= keyboard.caseMaterial === 'Wood' ? 'selected' : '' %>>Wood</option>
+		  <option <%= keyboard.caseMaterial === 'Aluminium' ? 'selected' : '' %>>Aluminium</option>
+		</select>
+  	  </div>
+	  <div class="form-group">
+		<label for="image">Image Link</label>
+		<input type="text" class="form-control" name="image" value="<%= keyboard.image %>">
+	  </div>
+	  <div class="form-group">
+		<label for="description">Review</label>
+		<textarea class="form-control" rows="8" name="description"><%= keyboard.description %></textarea>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+<%- include("partials/footer") %>

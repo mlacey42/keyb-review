@@ -1,0 +1,24 @@
+<%- include("partials/header") %>
+		<div class="container">
+			<div class="row mt-3">
+				<% keyboards.forEach((keyboard) => { %>
+					<div onmouseenter="addBorder(this)" onmouseleave="removeBorder(this)" class="card m-3">
+						<script>
+							function addBorder(x) {
+							  x.classList.add("border-dark");
+							}
+							function removeBorder(x) {
+							  x.classList.remove("border-dark");
+							}
+						</script>
+						<a href="/keyboards/<%= keyboard._id %>">
+							<img class="card-img card-img-top" src="<%= keyboard.image %>" alt="Picture of the keyboard"/>
+						</a>
+						<h3 class="card-title mt-3 mb-3 mx-3"><%= keyboard.name %></h3>
+						<p class="card-switch mb-3 mx-3"><%= keyboard.switches %></p>
+						<p class="card-text mb-3 mx-3"><%= keyboard.description %></p>
+					</div>
+				<% }) %>
+			</div>
+		</div>
+<%- include("partials/footer") %>
