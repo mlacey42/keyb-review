@@ -7,10 +7,12 @@ const checkKeyboardOwner = async (req, res, next) => {
 			next();
 		}
 		else {
+			req.flash("error", "User is not the owner of this review.");
 			res.redirect('back');
 		}
 	}
 	else {
+		req.flash("error", "Sign in to access more features.");
 		res.redirect('/login');
 	}
 }

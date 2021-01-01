@@ -21,12 +21,13 @@ router.post("/", isLoggedIn, async (req,res) => {
 			text: req.body.text,
 			keyboardId: req.body.keyboardId
 		});
-		console.log(comment);
+		req.flash("success", "Comment created!");
 		res.redirect(`/keyboards/${req.body.keyboardId}`);
 	}
 	catch (err) {
 		console.log(err);
-		res.send("Broken... comments POST");
+		req.flash("error", "Error creating comment");
+		res.redirect(`/keyboards/${req.body.keyboardId}`);
 	}
 });
 
@@ -34,9 +35,7 @@ router.post("/", isLoggedIn, async (req,res) => {
 router.get("/:commentId/edit", isLoggedIn, checkCommentOwner, async (req, res) => {
 	try {
 		const keyboard = await Keyboard.findById(req.params.id).exec();
-		const comment = await Comment.findById(req.params.commentId).exec();
-		console.log("keyboard: ", keyboard);
-		console.log("comment: ", comment);
+		const comment = await Comment.findById(req.params.commentId).exec();	
 		res.render("comments_edit", {keyboard, comment});
 	}
 	catch (err) {
@@ -50,11 +49,13 @@ router.put("/:commentId", isLoggedIn, checkCommentOwner, async (req, res) => {
 	try {
 		const comment = await Comment.findByIdAndUpdate(req.params.commentId, {text: req.body.text}, {new: true});
 		console.log(comment);
+		req.flash("success", "Comment updated!");
 		res.redirect(`/keyboards/${req.params.id}`);
 	}
 	catch (err){
 		console.log(err);
-		res.send("Broken... comment PUT");
+		req.flash("error", "Error updating comment");
+		res.redirect(`/keyboards/${req.params.id}`);
 	}
 });
 
@@ -63,11 +64,13 @@ router.delete("/:commentId", isLoggedIn, checkCommentOwner, async (req, res) => 
 	try{
 		const comment = await Comment.findByIdAndDelete(req.params.commentId);
 		console.log(comment);
+		req.flash("success", "Comment deleted!");
 		res.redirect(`/keyboards/${req.params.id}`);
 	}
 	catch (err) {
 		console.log(err);
-		res.send("Broken... comment DELETE");
+		req.flash("error", "Error deleting comment");
+		res.redirect('/keyboards');
 	}
 });
 

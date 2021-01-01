@@ -7,10 +7,12 @@ const checkCommentOwner = async (req, res, next) => {
             next();
         }
         else {
+            req.flash("error", "User is not the owner of this comment.");
             res.redirect('back');
         }
     }
     else {
+        req.flash("error", "Sign in to acccess more features.");
         res.redirect('/login');
     }
 }

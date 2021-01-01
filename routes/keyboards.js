@@ -39,11 +39,13 @@ router.post("/", isLoggedIn, async (req, res) => {
 	try {
 		const keyboard = await Keyboard.create(newKeyboard);
 		console.log(keyboard);
+		req.flash("success", "Keyboard created!");
 		res.redirect("/keyboards/" + keyboard._id);
 	}
 	catch (err) {
 		console.log(err);
-		res.send("Error with /keyboards POST")
+		req.flash("error", "Error creating keyboard");
+		res.redirect('/keyboards');
 	}
 });
 
@@ -105,11 +107,13 @@ router.put("/:id", isLoggedIn, checkKeyboardOwner, async (req, res) => {
 	try {
 		const keyboard = await Keyboard.findByIdAndUpdate(req.params.id, keyboardBody, {new: true}).exec();
 		console.log(keyboard);
+		req.flash("success", "Keyboard updated!");
 		res.redirect(`/keyboards/${req.params.id}`);
 	}
 	catch (err) {
 		console.log(err);
-		res.send("Error with /:id PUT")
+		req.flash("error", "Error updating keyboard");
+		res.redirect("/keyboards");
 	}
 });
 
@@ -118,11 +122,13 @@ router.delete("/:id", isLoggedIn, checkKeyboardOwner, async (req, res) => {
 	try {
 		const keyboard = await Keyboard.findByIdAndDelete(req.params.id).exec();
 		console.log(keyboard);
+		req.flash("success", "Keyboard deleted!");
 		res.redirect("/keyboards");
 	}
 	catch (err) {
 		console.log(err);
-		res.send("Error with /:id DELETE");
+		req.flash("error", "Error deleting keyboard");
+		res.redirect("/keyboards");
 	}
 });
 
