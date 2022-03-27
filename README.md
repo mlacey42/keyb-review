@@ -2,7 +2,7 @@
 
 Keyb-Review is a site where mechanical keyboard enthusiasts can share and find reviews for mechanical keyboards.
 
-![Keyb-Review Demo](blob:https://giphy.com/0cff6652-33fb-443a-a4ca-42b4a921fe8d)
+![Keyb-Review Demo](https://github.com/mlacey42/keyb-review/blob/main/public/img/keyb-rev.gif)
 
 ## Backend
 
